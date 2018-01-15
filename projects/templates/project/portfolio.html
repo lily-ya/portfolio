@@ -1,0 +1,31 @@
+
+    <h1 class="section-title wow fadeInUpQuick" data-wow-delay=".3s">
+      LINLI DING
+    </h1>
+    <p class="section-subcontent wow fadeInUpQuick" data-wow-delay=".4s">A current UT iSchool graduate student studying information with concentration in <br>Data Analytics and Web Development
+    </p>
+
+    <div class="row wow fadeInUp">
+      <div class="col-md-12">
+        <div class="controls text-center">
+          <a class="filter active btn btn-common" data-filter="all">
+            All
+          </a>
+          {% for c in categories %}
+          <a class="filter btn btn-common" data-filter="{{c}}">
+            {{c}}
+          </a>
+          {% endfor %}
+        </div>
+
+
+      </div>
+
+      <div id="portfolio">
+       {% for project in projects %}
+          {% include 'project/project_thumbnail.html' %}
+       {% endfor %}
+     </div>
+
+   </div>
+ </div>

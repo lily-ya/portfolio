@@ -1,0 +1,32 @@
+  {% load static %}
+
+  <div class="col-sm-6 col-md-4 col-lg-4 mix col-xl-4 wow fadeInUpQuick" data-wow-delay=".3s" data-category="{{project.get_category_display}}">
+
+        <a href="{{ project.get_absolute_url }}">
+    <div class="portfolio-item">   
+
+      <div class="portfolio-img">
+        {% if project.cover_pic_url %}
+          <img src="{{ project.cover_pic_url }}" alt="Project Cover Image" style="height:200px">
+        {% else %}
+          <img src="{% static 'img/project_default_cover.png' %}" alt="Project Default Cover Image" class="img-responsive" style="height:200px">
+        {% endif %}
+      </div>
+
+    {{ project.display_skill }} 
+
+      <div class="portfoli-content">
+        <div class="sup-desc-wrap">
+          <div class="sup-desc-inner">
+            <div class="sup-meta-wrap">
+              <h4 class="sup-title" >{{ project.title }}</h4>
+              <p class="sup-description">{{project.summary}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</a>
+  </div>
+

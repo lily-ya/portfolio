@@ -1,0 +1,39 @@
+  <h1 class="section-title wow fadeInUpQuick" data-wow-delay=".3s">
+    Contact Me
+  </h1>
+  <p class="section-subcontent wow fadeInUpQuick" data-wow-delay=".4s">Please feel free to contact me for any questions or comments.<br>I'd love to hear from you!
+  </p>
+
+  <div class="contact-form contact-info-section">
+
+    <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
+    {% csrf_token %}
+<!--     {{ form }}
+ -->
+      <div class="form-group wow slideInUp" data-wow-delay="0.3s">
+        <label for="name" class="sr-only">Name</label>
+        <input type="text" placeholder="Your Name" id="name" class="form-control contact-control" name="name" required data-error="Please enter your name">
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="form-group wow slideInUp" data-wow-delay="0.4s">
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" placeholder="Your Email" id="email" class="form-control contact-control" name="email" required data-error="Please enter your Email">
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="form-group wow slideInUp" data-wow-delay="0.5s">
+        <label for="subject" class="sr-only">Subject</label>
+        <input type="text" placeholder="Your Subject" id="msg_subject" class="form-control contact-control" name="subject" required data-error="Please enter your message subject">
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="form-group wow slideInUp" data-wow-delay="0.6s">
+        <label for="message" class="sr-only">Message</label>
+        <textarea placeholder="Your Message" rows="7" id="message" class="form-control" name="message" required data-error="Write your message"></textarea>
+        <div class="help-block with-errors"></div>
+      </div>
+      <button class="btn btn-common btn-lg wow bounceInUp" data-wow-delay="0.8s" type="submit" id="form-submit"><i class="fa fa-envelope"></i>Send</button>
+<!--       <div id="msgSubmit" class="h3 text-center hidden"></div>
+ --><!--       <div class="clearfix"></div>
+ -->    </form>
+
+</div>
+

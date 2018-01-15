@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h1 class="section-title wow fadeInUpQuick" data-wow-delay=".3s">
+	{{selected_project.title}}
+
+</h1>
+<p class="section-subcontent wow fadeInUpQuick" data-wow-delay=".4s">
+	{{selected_project.summary}}
+</p>
+
+<div class="section-subcontent col-sm-6 col-md-4 col-lg-4 mix col-xl-4 wow fadeInRightQuick" data-wow-delay=".3s">
+	<div style="text-align: left;">
+		<b>Main Role:</b> {{roles}} <br>
+
+		<b>Software: </b>{{skills}}
+		<br>
+		<b>Client: </b>{{clients}}
+		<br>
+		<b>Team Size: </b>{{selected_project.team_size}}
+		<br>
+		<b>Date:</b> {{selected_project.creation_date}}
+	</div>
+</div>
+
+<div class="col-sm-6 col-md-8 col-lg-8 mix col-xl-8">
+	<p class="section-subcontent wow fadeInRightQuick" data-wow-delay=".4s">
+		{{selected_project.description}}
+	</p>
+</div>
+
+</div>
+<div class="container" style="text-align: center;">
+	{% for file in files %}
+	<br>
+	<div class="wow fadeInUpQuick">
+
+		<img src="{{ file.image.url }}" alt="{{file.name}}" style="width: 100%; max-width: 800px">
+		<br><br>
+		<p class="section-subcontent wow fadeInUp" data-wow-delay=".5s">
+			{{ file.description }} 
+		</p>
+	</div>
+	{% endfor %}
+
+
+
+	<!-- other related project section -->
+	<div id="portfolio" class="section">
+		<hr>
+		<h1 class="section-title wow fadeInUpQuick animated">
+		Other Projects</h1> <!-- Related to {{project.get_category_display}} -->
+		{% for project in related_project %}
+		{% include 'project/project_thumbnail.html' %}
+		{% endfor %}
+
+	</div>
+
+
+
+
+
+	{% endblock %} 
+

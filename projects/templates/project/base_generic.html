@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% block title %}
+  <title>
+    Lin - Portfolio
+  </title>
+  {% endblock %}
+
+  {% load static %}
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/css/bootstrap.min.css' %}">
+  <!-- Main Style -->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/css/main.css' %}">
+  <!-- Responsive Style -->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/css/responsive.css' %}">
+  <!--Fonts-->
+  <link rel="stylesheet" media="screen" href="{% static 'vendor/assets/fonts/font-awesome/font-awesome.min.css' %}">
+  <link rel="stylesheet" media="screen" href="{% static 'vendor/assets/fonts/simple-line-icons.css' %}">    
+
+  <!-- Extras -->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/extras/owl/owl.carousel.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/extras/owl/owl.theme.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/extras/animate.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/extras/normalize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/extras/settings.css' %}">
+
+  <!-- Color CSS Styles  -->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/assets/css/colors/lightblue.css' %}" media="screen"> 
+
+
+  <!-- Add additional CSS in static file -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+</head>
+
+<body>
+
+  <!-- Header area wrapper starts -->
+  <header id="header-wrap">
+
+    <!-- Header area starts -->
+    <section id="header">
+
+      <!-- Navbar Starts -->
+      <nav class="navbar navbar-light" data-spy="affix" data-offset-top="50">
+        <div class="container">
+          <button class='navbar-toggler hidden-md-up pull-xs-right' data-target='#main-menu' data-toggle='collapse' type='button'>
+            ☰
+          </button>
+          <!-- Brand -->
+          <a class="navbar-brand" href="{% url 'home' %}" >
+            <img src="{% static 'img/logo.png' %}" alt="" style="height:40px;width:40px; position:relative; top:-5px;">
+          </a>
+
+          <div class="collapse navbar-toggleable-sm pull-xs-left pull-md-right" id="main-menu">
+            <!-- Navbar Starts -->
+            <ul class="nav nav-inline">
+              <li class="nav-item dropdown">
+                {% block project_active %}
+                <a class="nav-link active" href="{% url 'home' %}" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>{% endblock %}
+                <div class="dropdown-menu">  
+                  {% block project_dropdown_menu %}
+                  <!-- change 10 to the correct project.pk -->
+<!--                   <a class="dropdown-item" href="{% url 'index' %}">All</a>
+                  <a class="dropdown-item" href="{% url 'project-detail' 10 %}">Analysis</a>
+                  <a class="dropdown-item" href="{% url 'project-detail' 10 %}">Modeling</a>
+                  <a class="dropdown-item" href="{% url 'project-detail' 10 %}">Developing</a> -->
+<!--                   {% for project in projects %}
+                  <a class="dropdown-item" href="{% url 'project-detail' project.pk %}">{{ project.title }}</a>
+                  {% endfor %} -->
+                  {% endblock %}
+                </div> 
+
+                
+              </li>                                     
+
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="{% static 'file/Linli_Resume.pdf' %}" role="button" aria-haspopup="true" aria-expanded="false" target="_blank">
+                    Resume
+                  </a>                                     
+                </li> 
+                <li class="nav-item dropdown">
+                  {% block contact_active %}
+
+                  <a class="nav-link dropdown-toggle" href="{% url 'contact' %}" role="button" aria-haspopup="true" aria-expanded="false">
+                    Contact
+                  </a>
+                  {% endblock %}
+
+                </li>                          
+              </ul>  
+            </div>              
+          </div>
+        </nav>
+        <!-- Navbar Ends -->
+      </section> 
+      <!-- 162 Start Content -->
+
+      <section class="section">
+
+        <div class="container" style="text-align: center">  
+          {% block content %}
+
+
+          {% endblock %}
+        </div>
+      </section>
+
+<!-- 
+<div class="container" id="contact" style="text-align: center">
+
+    {% block contact %}
+
+    {% endblock %}
+  </div> -->
+
+
+
+  {% block footer %}
+  <footer>
+    <!-- 942 Copyright -->
+    
+
+    <div id="copyright">
+      <div class="container">
+        <div class="row">
+         <hr>   
+         <!-- <p class="copyright-text"> -->
+          <p>
+          ©  2018 Developed by <a href="{% url 'home' %}">Linli Ding</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright  End-->
+
+</footer>
+<!-- Footer Section End-->
+{% endblock %}
+<!-- Go To Top Link -->
+<!--     <a href="#" class="back-to-top">
+      <i class="fa fa-angle-up">
+      </i>
+    </a>
+
+    <div class="bottom"> <a href="#" class="settings"></a> </div> -->
+
+    <!-- JavaScript & jQuery Plugins -->
+    <!-- jQuery Load -->
+    <script src="{% static 'vendor/assets/js/jquery-min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'vendor/assets/js/bootstrap.min.js' %}"></script>
+    <!--Text Rotator-->
+    <script src="{% static 'vendor/assets/js/jquery.mixitup.js' %}"></script>
+    <!--WOW Scroll Spy-->
+    <script src="{% static 'vendor/assets/js/wow.js' %}"></script>
+    <!-- OWL Carousel -->
+    <script src="{% static 'vendor/assets/js/owl.carousel.js' %}"></script>
+
+    <!-- WayPoint -->
+    <script src="{% static 'vendor/assets/js/waypoints.min.js' %}"></script>
+    <!-- CounterUp -->
+    <script src="{% static 'vendor/assets/js/jquery.counterup.min.js' %}"></script>
+    <!-- ScrollTop -->
+    <script src="{% static 'vendor/assets/js/scroll-top.js' %}"></script>
+    <!-- Appear -->
+    <script src="{% static 'vendor/assets/js/jquery.appear.js' %}"></script>
+    <script src="{% static 'vendor/assets/js/jquery.vide.js' %}"></script>
+    <!-- All JS plugin Triggers -->
+    <script src="{% static 'vendor/assets/js/main.js' %}"></script>
+    <!-- <script src="{% static 'vendor/assets/js/color-switcher.js' %}"></script> -->
+    <!-- custom javascript -->
+    <script src="{% static 'js/app.js' %}"></script>
+
+  </body>
+  </html>
