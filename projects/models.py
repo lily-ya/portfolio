@@ -128,15 +128,15 @@ class Project(models.Model):
 
     PROJECT_CATEGORY = [
     (0, 'Uncategorized',),
-    (1, 'Business Analysis',),
-    (2, 'Data Modeling',),
-    (3, 'Website Developing',),
+    (1, 'Data Analysis',),
+    (2, 'Web Development',),
     ]
 
     category = models.IntegerField(default=0, choices=PROJECT_CATEGORY)
     # category = models.ForeignKey(Category, help_text="select a category for this project", on_delete=models.SET_NULL, null=True, blank=True, related_name="categories")
     num_view = models.IntegerField(default=0)
     demo_url = models.URLField(max_length=200, blank=True, help_text="Insert an internal link for this project if there is any")
+    demo_name = models.CharField(max_length=20, blank=True)
     # skill = models.ForeignKey(Skill, related_name='projects', help_text="Select a skill for this project", on_delete=models.SET_NULL, null=True, blank=True)
     # ManyToManyField used because skill can contain many projects. projects can cover many skills.
     # skill class has already been defined so we can specify the object above.
@@ -146,9 +146,10 @@ class Project(models.Model):
     # Foreign Key used because book can only have one author, but authors can have multiple books
     # Author as a string rather than object because it hasn't been declared yet in the file.
     team_size = models.IntegerField(default=1, help_text="Enter the size of the team for the project")
-
+    display_order = models.IntegerField(default=0, null=True, blank=True)
+    
     class Meta:
-    	ordering = ['title']
+    	ordering = ['display_order', 'title']
 
 
     def __str__(self):
@@ -171,7 +172,7 @@ class Project(models.Model):
         """
         Creates a string for the Genre. This is required to display genre in Admin.
         """
-        return ' | '.join([ skill.name for skill in self.skills.all()])
+        return ' | '.join([ skill.name.split(" ")[0] for skill in self.skills.all()])
         display_skill.short_description = 'Skill'
 
 

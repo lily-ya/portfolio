@@ -11,9 +11,11 @@
         {% else %}
           <img src="{% static 'img/project_default_cover.png' %}" alt="Project Default Cover Image" class="img-responsive" style="height:200px">
         {% endif %}
+
+            {{ project.display_skill }} 
+
       </div>
 
-    {{ project.display_skill }} 
 
       <div class="portfoli-content">
         <div class="sup-desc-wrap">

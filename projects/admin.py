@@ -24,8 +24,9 @@ class SkillAdmin(admin.ModelAdmin):
     list_display = ('name', 'project')
 
 @admin.register(File)
-class SkillAdmin(admin.ModelAdmin):
-    list_display = ('name', 'project')
+class FileAdmin(admin.ModelAdmin):
+    list_display = ('name', 'project', 'display_order')
+
 
 class SkillInline(admin.TabularInline):
     model = Skill
@@ -45,8 +46,8 @@ class FileInline(admin.TabularInline):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-	list_display = ('title', 'category', 'demo_url', 'creation_date', 'num_view')
-	fields = ['title', 'category', 'status', 'demo_url', 'creation_date',  'summary', 'description', 'team_size', 'cover_pic', 'num_view',]
+	list_display = ('title', 'category', 'display_order', 'creation_date', 'num_view')
+	fields = ['title', 'category', 'status', 'display_order', 'demo_url', 'creation_date',  'summary', 'description', 'team_size', 'cover_pic', 'num_view',]
 	#The fields attribute lists just those fields that are to be displayed on the form, in order. Fields are displayed vertically by default, but will display horizontally if you further group them in a tuple (as shown in the "date" fields above).
 	inlines = [SkillInline, RoleInline, ClientInline, FileInline]
 	list_filter = ('status', 'category', 'skills', 'roles')

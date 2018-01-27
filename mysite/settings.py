@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'pf-@jxtojga)z+4s*uwbgjrq$aep62-thd0q7f&o77xtpka!_m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # SECURITY WARNING: App Engine's security features ensure that it is safe to
 # have ALLOWED_HOSTS = ['*'] when the app is deployed. If you deploy a Django
@@ -139,16 +139,16 @@ USE_TZ = True
 # Fill in your cloud bucket and switch which one of the following 2 lines
 # is commented to serve static content from GCS
 # STATIC_URL = 'https://storage.googleapis.com/<your-gcs-bucket>/static/'
-STATIC_URL = '/static/'
-# STATIC_URL = 'https://storage.googleapis.com/linli-ding-projects/static/'
+
+# STATIC_URL = '/static/'
+STATIC_URL = 'https://storage.googleapis.com/linli-ding-projects/static/'
 
 # [END staticurl]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# STATIC_ROOT = 'static/'
 
-MEDIA_URL = '/media/'
-# MEDIA_URL = 'https://storage.googleapis.com/linli-ding-projects/static/media/'
+# MEDIA_URL = '/media/'
+MEDIA_URL = 'https://storage.googleapis.com/linli-ding-projects/static/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
