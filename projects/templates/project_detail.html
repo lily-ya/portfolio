@@ -1,6 +1,16 @@
 {% extends "index.html" %}
 
 {% load static %}
+{% block project_active %}
+<a class="nav-link" href="{% url 'home' %}" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>{% endblock %}
+
+  {% block title %}
+  <title>
+    {{selected_project.title}} | Linli Ding - Portfolio
+  </title>
+  <meta name="description" content="{{selected_project.summary}}">
+  <meta name="keywords" content="{{skills}}">
+  {% endblock %}
 
 {% block content %}
 
@@ -14,15 +24,15 @@
 
 <div class="section-subcontent col-sm-6 col-md-4 col-lg-4 mix col-xl-4 wow fadeInRightQuick" data-wow-delay=".3s">
 	<div style="text-align: left;">
-		<b>Main Role:</b> {{roles}} <br>
-
-		<b>Skills: </b>{{skills}}
+		<b>Main Role: </b>{{roles}}<br>
+		<b>Skills: </b>{{skills}}<br>
+		<b>Client: </b>{{clients}}<br>
+		<b>Team Size: </b>{{selected_project.team_size}}<br>
+		<b>Date: </b>{{selected_project.creation_date}}
+		{% if selected_project.demo_name %}
 		<br>
-		<b>Client: </b>{{clients}}
-		<br>
-		<b>Team Size: </b>{{selected_project.team_size}}
-		<br>
-		<b>Date:</b> {{selected_project.creation_date}}
+		<b>{{selected_project.demo_tag}}: </b><a href="{{selected_project.demo_url}}" target="_blank" onMouseOver="this.style.color='#00D3F9'" onMouseOut="this.style.color='#666'" style="color: #666">{{selected_project.demo_name}}</a>
+        {% endif %}
 	</div>
 </div>
 
@@ -37,12 +47,12 @@
 	{% for file in files %}
 	<br>
 	<div class="wow fadeInUpQuick">
+		<div class="section-subcontent wow fadeInUpQuick" data-wow-delay=".5s" style="padding-bottom: 0px">
+			{{ file.description }} 
+		</div>
 
 		<img src="{{ file.image.url }}" alt="{{file.name}}" style="width: 100%; max-width: 800px">
 		<br><br>
-		<p class="section-subcontent wow fadeInUp" data-wow-delay=".5s">
-			{{ file.description }} 
-		</p>
 	</div>
 	{% endfor %}
 

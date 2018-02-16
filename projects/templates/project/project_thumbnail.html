@@ -7,7 +7,7 @@
 
       <div class="portfolio-img">
         {% if project.cover_pic_url %}
-          <img src="{{ project.cover_pic_url }}" alt="Project Cover Image" style="height:200px">
+          <img src="{{ project.cover_pic_url }}" alt="{{project.title}}" style="height:200px">
         {% else %}
           <img src="{% static 'img/project_default_cover.png' %}" alt="Project Default Cover Image" class="img-responsive" style="height:200px">
         {% endif %}
@@ -21,7 +21,7 @@
         <div class="sup-desc-wrap">
           <div class="sup-desc-inner">
             <div class="sup-meta-wrap">
-              <h4 class="sup-title" >{{ project.title }}</h4>
+              <h4 class="sup-title" >{{project.title}}</h4>
               <p class="sup-description">{{project.summary}}</p>
             </div>
           </div>

@@ -129,14 +129,15 @@ class Project(models.Model):
     PROJECT_CATEGORY = [
     (0, 'Uncategorized',),
     (1, 'Data Analysis',),
-    (2, 'Web Development',),
+    (2, 'Database Management',),
     ]
 
     category = models.IntegerField(default=0, choices=PROJECT_CATEGORY)
     # category = models.ForeignKey(Category, help_text="select a category for this project", on_delete=models.SET_NULL, null=True, blank=True, related_name="categories")
     num_view = models.IntegerField(default=0)
     demo_url = models.URLField(max_length=200, blank=True, help_text="Insert an internal link for this project if there is any")
-    demo_name = models.CharField(max_length=20, blank=True)
+    demo_name = models.CharField(max_length=100, blank=True, help_text="put the name for demo_url")
+    demo_tag = models.CharField(max_length=100, blank=True, help_text="put the name tag for demo_url")
     # skill = models.ForeignKey(Skill, related_name='projects', help_text="Select a skill for this project", on_delete=models.SET_NULL, null=True, blank=True)
     # ManyToManyField used because skill can contain many projects. projects can cover many skills.
     # skill class has already been defined so we can specify the object above.

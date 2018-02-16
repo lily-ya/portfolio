@@ -6,7 +6,8 @@ from .models import Project, Skill, Role, Client, ViewCount, File, ContactRecord
 @admin.register(ViewCount)
 class SkillAdmin(admin.ModelAdmin):
     list_display = ('project', 'ip', 'date')
-
+    list_filter = ('project', 'ip'
+        )
 @admin.register(ContactRecord)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'message', 'sent_date')
@@ -47,7 +48,7 @@ class FileInline(admin.TabularInline):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
 	list_display = ('title', 'category', 'display_order', 'creation_date', 'num_view')
-	fields = ['title', 'category', 'status', 'display_order', 'demo_url', 'creation_date',  'summary', 'description', 'team_size', 'cover_pic', 'num_view',]
+	fields = ['title', 'category', 'status', 'display_order', 'demo_url', 'demo_tag', 'demo_name','creation_date',  'summary', 'description', 'team_size', 'cover_pic', 'num_view',]
 	#The fields attribute lists just those fields that are to be displayed on the form, in order. Fields are displayed vertically by default, but will display horizontally if you further group them in a tuple (as shown in the "date" fields above).
 	inlines = [SkillInline, RoleInline, ClientInline, FileInline]
 	list_filter = ('status', 'category', 'skills', 'roles')
